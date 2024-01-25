@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        height: 100%;
+        background-color: antiquewhite;
+        position: relative;
+    }
+
+    .flex {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .buttons {
+        margin-top: 30px;
+    }
+
+    .buttons button {
+        font-size: 20px;
+        color: white;
+        background-color:darkcyan;
+        border: 2px solid darkcyan;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin: 10px;
+    }
+
+    .q {
+        color: darkcyan;
+        font-size: 50px;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+     /* Updated the .random-position class */
+    /* Added a class for random position */
+    .random-position {
+            position: absolute;
+            transition: transform 0.5s;
+        }
+</style>
+<body>
+    <div class="flex">
+        <p class="q">
+            Will you be my VALENTINE ?
+        </p>
+        <img class="first" src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnE4cTIzOHNubTdpYnBmam41MG1iM3BwNHhxM3djeGg0OTYxMml5cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7diCX3MXpTp3JwF8dR/giphy.gif" alt="Computer man" style="width:300px;height:300px;">
+        <img class="second hidden" src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3RwbGZwZHlsY2RuOTUzcnU0bGw3bzl5d2MzdDc2b2gxN2l4NzhzciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/nXxOjZrbnbRxS/giphy.gif" alt="Computer man" style="width:300px;height:300px;">
+        <div class="buttons">
+            <button id="yesButton" onclick="showSecondImage()">YES</button>
+            <button id="noButton" class="random-position" onclick="moveNoButton()">NO</button>
+        </div>
+    </div> 
+
+    <script>
+        function showSecondImage() {
+            document.querySelector(".q").style.display = "none";
+            document.querySelector(".first").style.display = "none";
+            document.querySelector(".second").style.display = "block";
+            document.getElementById("yesButton").style.display = "none";
+            document.getElementById("noButton").style.display = "none";
+        }
+
+        function moveNoButton() {
+            const noButton = document.getElementById("noButton");
+            const maxX = window.innerWidth - noButton.clientWidth;
+            const maxY = window.innerHeight - noButton.clientHeight;
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            noButton.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        }
+    </script>
+</body>
+</html>
